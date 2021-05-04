@@ -26,8 +26,9 @@ const jobCtrl = require('./Controllers/jobcontroller')
 //endpoints
 app.get('/api/maintenance/:type',jobCtrl.getContractors)
 app.post('/api/maintenance/:id,:type',jobCtrl.addJob)
+app.post('/api/invoice/:service,:time,:rate',jobCtrl.addNote)
 app.put('/api/maintenance/:id',jobCtrl.editJob)
-app.delete('/api/maintenance/:id',jobCtrl.deleteJob)
+app.delete('/api/invoice/:id',jobCtrl.deleteJob)
 
 
 

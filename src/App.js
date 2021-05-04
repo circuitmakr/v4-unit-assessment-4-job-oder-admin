@@ -4,7 +4,6 @@ import Invoice from './Components/invoice'
 import Phone from './Components/phone'
 import Header from './Components/header'
 import Options from './Components/options'
-import Notes from './Components/notesList'
 import React, {Component} from 'react'
 import axios from 'axios';
 
@@ -24,15 +23,42 @@ class App extends Component {
     contractors: [],
     hired: [],
     contractor: '',
-    invoice: []
+    invoice: [],
+    notes:[]
   }
   
 }
 
-
 updateInvoice=(data)=>{
 this.setState({invoice: [...data]})
 console.log(this.state.invoice)
+this.addNote() 
+}
+
+deleteRecord=(id)=>{
+  axios.delete(`http://localhost:5000/api/invoice/${id}`)
+  .then((res) => {
+      this.setState({notes: res.data})
+      console.log(this.state.notes)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
+
+addNote =() =>{
+  console.log(this.state.invoice[0])
+  const service = this.state.invoice[0]
+  const time = this.state.invoice[1]
+  const rate = this.state.hired[3]
+  axios.post(`http://localhost:5000/api/invoice/${service},${time},${rate}`)
+  .then((res) => {
+      this.setState({notes: res.data})
+      console.log(this.state.notes)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
 }
 
 getContractors =(props) =>{
@@ -72,7 +98,6 @@ handleHire =  (index,el) =>{
   })    
 }
 
-
   render(){
     return (
       <div className="App-container">
@@ -82,6 +107,7 @@ handleHire =  (index,el) =>{
         />
         <Invoice 
         Invoice ={this.state.contractor}
+        notes ={this.state.notes}
         fName={this.state.fName}
         lName={this.state.lName}
         address={this.state.address}
@@ -91,6 +117,7 @@ handleHire =  (index,el) =>{
         hired={this.state.hired}
         invoiceUpdate={this.state.invoice}
         note={this.state.note}
+        deleteRecord={this.deleteRecord}
         />
         <Phone
         updateInvoice={this.updateInvoice} 

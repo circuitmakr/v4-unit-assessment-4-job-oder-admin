@@ -13,7 +13,9 @@ addNewNote=(service, time) =>{
    console.log(this.state.newNote)
    this.props.updateInvoice(this.state.newNote)
  }
-
+completeJob=()=>{
+  this.props.resetList()
+}
  
   render(){
     

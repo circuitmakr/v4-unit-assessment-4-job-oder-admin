@@ -1,9 +1,9 @@
 
 const dContractors = require('../Contractor_Data.json')
 
-let Invoices =[
-]
-let workId =1;
+
+let Notes=[]
+
 module.exports={
     getContractors: (req,res) =>{
     //the contractors are displayed by company
@@ -54,21 +54,44 @@ module.exports={
      let orderNumber = Math.floor(Math.random()*999);
      const invoiceNumber =  `INVOICE NUMBER: 000${orderNumber}`;
      invoice = [...invoice, invoiceNumber];
-     //invoices = [...invoice];
-     workId++;
      id++;
     console.log(invoice)
     // console.log(workId)
         res.status(200).send(invoice)
     },
-    addClient: (req,res) => {
-        res.status(200).send()
+    addNote: (req,res) => {
+        let {service, time, rate} = req.params
+        console.log('I got a add Note request here!')
+        console.log(req.params)
+        let total = +rate * +time
+        console.log(total)
+        const note =[
+            service,
+            time,
+            +total.toFixed(2)
+        ]
+        Notes.push(...note)
+        console.log(Notes)
+        res.status(200).send(Notes)
     },
+    // clearMemory:(req,res) =>{
+    //     Notes = "";
+    //     res.status(200).send(Notes)  
+    // },
     editJob: (req,res) =>{
         res.status(200).send()
     },
-    deleteJob: (req,res) =>{
-        res.status(200).send()
-    }
 
+    deleteJob: (req,res) =>{
+        console.log('I got a delete Note request here!')
+        const {id} = req.params
+        const index = Notes.findIndex((e) =>{
+            return e.id === +id
+        })
+        if(index === -1){
+            return res.status(500).send("Note not found")
+        }
+        Notes.splice(index,1)
+        res.status(200).send(Notes)
+    }
 }

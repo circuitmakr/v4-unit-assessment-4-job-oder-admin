@@ -16,6 +16,7 @@ class Invoice extends Component {
   }
 
   render(){
+    let notes = this.props.notes
     return (
       <div className="Invoice-container">
           <article className="Invoice-wrapper">
@@ -47,7 +48,9 @@ class Invoice extends Component {
   
           <main className="output">
             <h3>Summary</h3>
-            <h4>{this.props.invoiceUpdate[0]} {this.props.invoiceUpdate[1]}</h4>
+            {notes.map((e, index) => 
+            { return <li>{e}<button onClick={()=>this.props.deleteRecord(index)} >DELETE</button></li>
+            })}
           </main>
       </div>
     );

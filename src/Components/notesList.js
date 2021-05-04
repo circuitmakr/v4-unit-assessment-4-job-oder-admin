@@ -47,7 +47,7 @@ expenseOnChange=(value)=>{
             </div>
             <section className="notePadButtonContainer">
             <button className="btnDeleteNote">DELETE</button>
-            <button className="btnJobComplete">JOB COMPLETE</button>
+            <button  className="btnJobComplete">JOB COMPLETE</button>
             <button className="btnEditNote">EDIT</button>  
 
             </section>
