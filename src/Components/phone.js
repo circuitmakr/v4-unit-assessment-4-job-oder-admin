@@ -8,9 +8,10 @@ class Phone extends Component {
       newNote: []
     }
   }
-addNewNote=(service, parts, time, expense) =>{
-   this.setState({newNote: [service,parts,time,expense]})
+addNewNote=(service, time) =>{
+   this.setState({newNote: [service,time]})
    console.log(this.state.newNote)
+   this.props.updateInvoice(this.state.newNote)
  }
 
  

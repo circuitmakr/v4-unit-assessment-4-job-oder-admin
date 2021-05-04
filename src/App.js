@@ -29,8 +29,10 @@ class App extends Component {
   
 }
 
-updateInvoice=([...data])=>{
+
+updateInvoice=(data)=>{
 this.setState({invoice: [...data]})
+console.log(this.state.invoice)
 }
 
 getContractors =(props) =>{
@@ -87,6 +89,8 @@ handleHire =  (index,el) =>{
         state={this.state.state}
         zip={this.state.zip}
         hired={this.state.hired}
+        invoiceUpdate={this.state.invoice}
+        note={this.state.note}
         />
         <Phone
         updateInvoice={this.updateInvoice} 

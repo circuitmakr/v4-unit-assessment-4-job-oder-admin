@@ -40,7 +40,15 @@ class Invoice extends Component {
             <br/>
             </article>
             <hr/>
+            <article className="description">
+              <p>{this.props.note}</p>
           </article>
+          </article>
+  
+          <main className="output">
+            <h3>Summary</h3>
+            <h4>{this.props.invoiceUpdate[0]} {this.props.invoiceUpdate[1]}</h4>
+          </main>
       </div>
     );
   }

@@ -27,7 +27,7 @@ expenseOnChange=(value)=>{
         return(
             <div className="notePad">
             <h5>Notes</h5>
-            <button onClick={()=> this.props.addNewNote(this.state.service,this.state.parts,this.state.time,this.state.expense)} className="addNote" name="addNotes">ADD</button>   
+            <button onClick={()=> this.props.addNewNote(this.state.service,this.state.time)} className="addNote" name="addNotes">ADD</button>   
             <div className="writingPad">
             <input value={this.state.service} onChange={(e)=> this.serviceOnChange(e.target.value)} className="noteItem" placeholder="service"></input>
             <select value={this.state.time} onChange={(e)=> this.timeOnChange(e.target.value)} name="labor" className="noteItem">
@@ -42,8 +42,8 @@ expenseOnChange=(value)=>{
             <option value="4">4</option>
           </optgroup>
           </select>
-            <input  value={this.state.parts} onChange={(e)=> this.partsOnChange(e.target.value)} className="noteItem" placeholder="parts"></input>
-            <input value={this.state.expense} onChange={(e)=> this.expenseOnChange(e.target.value)}className="noteItem" placeholder="expense"></input>
+            {/* <input  value={this.state.parts} onChange={(e)=> this.partsOnChange(e.target.value)} className="noteItem" placeholder="parts"></input>
+            <input value={this.state.expense} onChange={(e)=> this.expenseOnChange(e.target.value)}className="noteItem" placeholder="expense"></input> */}
             </div>
             <section className="notePadButtonContainer">
             <button className="btnDeleteNote">DELETE</button>
