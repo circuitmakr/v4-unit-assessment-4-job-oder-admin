@@ -150,6 +150,7 @@ list-style-type: none;
 }
 .notePadButtonContainer{
   display: inline-flex;
+  justify-content: flex-end;
   margin-top: 0;
   width: 100%;
   border: 2px solid red;
@@ -163,8 +164,14 @@ list-style-type: none;
 }
 .notePad{
   width: 100%;
-  margin-top: 10rem;
+  margin-top: 1rem;
 }
 .writingPad{
   width: 100%;
+}
+.noteItem{
+  width:50%;
+}
+.btnDeleteNote{
+  margin-right: 1em;
 }

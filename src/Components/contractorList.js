@@ -59,7 +59,7 @@ typeOnChange=(e)=>{
           <br/>
           <br/>
           <h4>Describe the problem:</h4>
-          <textarea onChange={this.noteOnChange}rows="5" cols="40" />
+          <textarea placeholder="Please enter the nautre of your issue so that we can direct the proper services to complete your order. Be as descriptive as possible." onChange={this.noteOnChange}rows="5" cols="40" />
           <br/>
           <label htmlFor="trade"><h4>Trade Needed: </h4></label>
           <select onChange={this.typeOnChange} name="trade" className="selectGroup">

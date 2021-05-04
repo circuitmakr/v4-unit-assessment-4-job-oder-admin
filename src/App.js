@@ -22,10 +22,11 @@ class App extends Component {
     type: '',
     contractors: [],
     hired: [],
-    contractor: ''
+    contractor: '',
+    newNote: []
+  }
 }
 
-}
 getContractors =() =>{
     //console.log(this.state.type)
     axios.get(`http://localhost:5000/api/maintenance/${this.state.type}`)
@@ -60,8 +61,11 @@ handleHire =  (index,el) =>{
   this.setState({hired: [index,...el]},() =>{
     console.log(this.state.hired)
     this.postHired()
-  })
-        
+  })    
+}
+
+updateInvoice=(service, time, parts, cost= 0)=>{
+    this.setState({newNote: [...service,...time,...parts,...cost]})
 }
 
   render(){
@@ -89,6 +93,7 @@ handleHire =  (index,el) =>{
         state={this.state.state}
         zip={this.state.zip}
         Invoice ={this.state.contractor}
+        updateInvoice={this.updateInvoice}
         />
         <Options
         index ={this.state.contractors.index}
