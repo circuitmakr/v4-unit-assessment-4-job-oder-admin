@@ -1,44 +1,36 @@
-import e from 'express'
 import React, {Component} from 'react'
 
 class Notes extends Component{
-    constructor(){
-        super()
-        this.sate={
+    constructor(props){
+        super(props)
+        this.state={
             editMode: false,
-            service: '',
+            service:'',
             parts: '',
             time:'',
-            expense: ''
+            expense: 0
         }
     }
-
-    serviceOnChange(e){
-        this.setState({service: e.target.value})
-        console.log(this.state.service)
-    }
-    timeOnChange(e){
-        this.setState({time: e.target.value})
-        console.log(this.state.time)
-    }
-    partsOnChange(e){
-        this.setState({parts: e.target.value})
-        console.log(this.state.parts)
-    }
-    expenseOnChange(e){
-        this.setState({expense: e.target.value})
-        console.log(this.state.expense)
-    }
-
-
+serviceOnChange=(value)=>{
+    this.setState({service: value})
+}
+partsOnChange=(value)=>{
+    this.setState({parts: value})
+}
+timeOnChange=(value)=>{
+    this.setState({time: value})
+}
+expenseOnChange=(value)=>{
+    this.setState({expense: value})
+}
     render(){
         return(
             <div className="notePad">
             <h5>Notes</h5>
-            <button className="addNote">ADD</button>   
+            <button onClick={()=> this.props.addNewNote(this.state.service,this.state.parts,this.state.time,this.state.expense)} className="addNote" name="addNotes">ADD</button>   
             <div className="writingPad">
-            <input onChange={(e) => this.serviceOnChange} value={this.state.service} className="noteItem" placeholder="service"></input>
-            <select onChange={(e) => this.timeOnChange} value={this.state.time} name="labor" className="noteItem">
+            <input value={this.state.service} onChange={(e)=> this.serviceOnChange(e.target.value)} className="noteItem" placeholder="service"></input>
+            <select value={this.state.time} onChange={(e)=> this.timeOnChange(e.target.value)} name="labor" className="noteItem">
             <optgroup>
             <option value="0.5">0.5</option>
             <option value="1">1</option>
@@ -50,12 +42,14 @@ class Notes extends Component{
             <option value="4">4</option>
           </optgroup>
           </select>
-            <input onChange ={(e)=> this.partsOnChange} value={this.state.parts} className="noteItem" placeholder="parts"></input>
-            <input onChange ={(e)=> this.expenseOnChange}value={this.state.expense} className="noteItem" placeholder="expense"></input>
+            <input  value={this.state.parts} onChange={(e)=> this.partsOnChange(e.target.value)} className="noteItem" placeholder="parts"></input>
+            <input value={this.state.expense} onChange={(e)=> this.expenseOnChange(e.target.value)}className="noteItem" placeholder="expense"></input>
             </div>
             <section className="notePadButtonContainer">
-            <button className="btnDeleteNote">DELETE</button>   
-            <button className="btnEditNote">EDIT</button>   
+            <button className="btnDeleteNote">DELETE</button>
+            <button className="btnJobComplete">JOB COMPLETE</button>
+            <button className="btnEditNote">EDIT</button>  
+
             </section>
             </div>
         )

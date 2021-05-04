@@ -4,8 +4,16 @@ import Notes from './notesList'
 class Phone extends Component {
   constructor(){
   super()
+    this.state={
+      newNote: []
+    }
   }
-  
+addNewNote=(service, parts, time, expense) =>{
+   this.setState({newNote: [service,parts,time,expense]})
+   console.log(this.state.newNote)
+ }
+
+ 
   render(){
     
     return (
@@ -22,11 +30,13 @@ class Phone extends Component {
               <br/>
               <article>
                 <h5>Assigned to:</h5>
-                {/* <p>{this.props.Invoice[0][0]} {this.props.Invoice[0][1]}</p>
+                <p>{this.props.Invoice[0][0]} {this.props.Invoice[0][1]}</p>
                 <p>{this.props.Invoice[0][2]}</p>
-                <p>{this.props.Invoice[0][3]}</p> */}
+                <p>{this.props.Invoice[0][3]}</p>
               </article>
-              <Notes/>
+              <Notes 
+              addNewNote={this.addNewNote}
+              />
             </main>
           </div>
           <div className="phoneButton"></div>

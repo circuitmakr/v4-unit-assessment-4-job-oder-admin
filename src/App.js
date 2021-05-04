@@ -4,6 +4,7 @@ import Invoice from './Components/invoice'
 import Phone from './Components/phone'
 import Header from './Components/header'
 import Options from './Components/options'
+import Notes from './Components/notesList'
 import React, {Component} from 'react'
 import axios from 'axios';
 
@@ -23,11 +24,16 @@ class App extends Component {
     contractors: [],
     hired: [],
     contractor: '',
-    newNote: []
+    invoice: []
   }
+  
 }
 
-getContractors =() =>{
+updateInvoice=([...data])=>{
+this.setState({invoice: [...data]})
+}
+
+getContractors =(props) =>{
     //console.log(this.state.type)
     axios.get(`http://localhost:5000/api/maintenance/${this.state.type}`)
     .then((res) => {
@@ -37,8 +43,8 @@ getContractors =() =>{
     .catch((err) => {
       console.log(err)
     })
-
 }
+
 postHired = () =>{
   console.log(this.state.hired)
   axios.post(`http://localhost:5000/api/maintenance/${this.state.hired[0]},${this.state.type}`)
@@ -64,9 +70,6 @@ handleHire =  (index,el) =>{
   })    
 }
 
-updateInvoice=(service, time, parts, cost= 0)=>{
-    this.setState({newNote: [...service,...time,...parts,...cost]})
-}
 
   render(){
     return (
@@ -85,7 +88,8 @@ updateInvoice=(service, time, parts, cost= 0)=>{
         zip={this.state.zip}
         hired={this.state.hired}
         />
-        <Phone 
+        <Phone
+        updateInvoice={this.updateInvoice} 
         fName={this.state.fName}
         lName={this.state.lName}
         address={this.state.address}
@@ -93,13 +97,13 @@ updateInvoice=(service, time, parts, cost= 0)=>{
         state={this.state.state}
         zip={this.state.zip}
         Invoice ={this.state.contractor}
-        updateInvoice={this.updateInvoice}
         />
         <Options
         index ={this.state.contractors.index}
         handleHire={this.handleHire}
         contractors={this.state.contractors}
          />
+
       </div>
     );
   }
