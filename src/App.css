@@ -1,38 +1,170 @@
-.App {
-  text-align: center;
+*, ::before, ::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-container{
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  background-color: whitesmoke;
+}
+.Head-header {
+  background-color: #282c34;
+  height: 6vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content:space-between;
+  padding-left: 1rem;
+  padding-right: 2.5rem;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.Invoice-container{
+  width: 40%;
+  height: 100vh;
+  flex-grow: 1;
 }
+.contractorList{
+  width: 25%;
+  height: 100vh;
+  justify-content: center;
+  float: left;
+  box-shadow: 2px 4px 4px 3px gray;
+}
+.Phone-container{
+  height: 100vh;
+  width: 20%;
+  flex-grow: 1;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+}
+.general-msg{
+  width: 90%;
+  height: 17%;
+  background-color: steelblue;
+  margin-left: auto;
+  margin-right:auto;
+  padding: 0.75rem;
+  border-radius: 2%;
+}
+.frmNewClient{
+  height:fit-content;
+  width: 90%;
+  margin-top: 1em;
+  margin-left:auto;
+  margin-right:auto;
+}
+.btnNew{
+width:100%;
+height: 3rem;
+background-color: turquoise;
+border-radius: 2%;
+}
+.Invoice-wrapper{
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 1%;
+  width: 80%;
+  height: 90vh;
+  background-color: white;
+  box-shadow: 1px 2px 2px 2px rgb(165, 164, 164);
+}
+.btnChoice {
+  height: 1.5rem;
+  width: 6rem;
+  border-radius: 5%;
+  border: none;
+  box-shadow: 1px 2px 2px -1px rgb(165, 164, 164);
+}
+.submit{
+background-color: #48e040;
+margin-left: 30%;
+}
+.contractInfo{
+  height: 8rem;
+  width: 100%;
+  position: relative;
+}
+.infoBox{
+position: absolute;
+z-index: 1;
+height: 8rem;
+width: 45%;
+
+}
+.contractorInfo{
+margin-left: 50%;
+}
+.clientInfo{
+  margin-left: 1rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
+.invoiceTitle{
+  padding-top: 1em;
+  margin-left: 1em;
+}
+.phoneWrapper{
+height: 90vh;
+width: 90%;
+margin-top: 1rem;
+background-color: darkgray;
+border-radius: 7%;
+position: relative;
+border: 4px solid black;
+}
+.phoneScreen{
+  position:absolute;
+  margin-top: 3rem;
+  margin-left: 0.25rem;;
+  width: 97.5%;
+  height:85%;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 3px 1px white;
+}
+.phoneButton{
+  position: absolute;
+  height: 1.5rem;
+  width: 4rem;
+  margin-top: -2rem;
+  border-radius: 20%;
+  margin-left: 8.5rem;
+  background-color: darkgray;
+  box-shadow: inset 1px 1px 2px 1px black;
+}
+.contractorOptions{
+position:relative;
+background-color: whitesmoke;
+border: 2px solid black;
+margin-top: -10rem;
+z-index: 2;
+width: 100%;
+height: fit-content;
+margin-left:auto;
+margin-right:auto;
+list-style-type: none;
+}
+.notePadButtonContainer{
+  display: inline-flex;
+  margin-top: 0;
+  width: 100%;
+  border: 2px solid red;
+  height: fit-content;
+  align-content: space-between;
+}
+.addNote{
+  width: 100%;
+  height: fit-content;
+  border: 2px solid blue;
+}
+.notePad{
+  width: 100%;
+  margin-top: 10rem;
+}
+.writingPad{
+  width: 100%;
 }
